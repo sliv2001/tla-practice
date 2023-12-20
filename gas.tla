@@ -34,11 +34,12 @@ actions == [pressed: 0..1, turned: 0..1, couple_hot: 0..1]
         };
     };
     
-\* ASK about previous states in spec, not assertions
+\* ASK how to specify liveness properties with pattern matching?
+\* In SVA I would write sth like `pressed ##1 turned ##1 ~pressed |-> s_eventually gas & flame & ~ignition
+\* Is there a mean to do the same in TLA+?
 
     fair process (burner \in burners) 
     {
-\* ASK when I try to create new local variable, it is processed as function. Why?       
         burner_l1:
         while (TRUE) {
         
