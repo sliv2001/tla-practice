@@ -1,0 +1,350 @@
+-------------------------------- MODULE gas --------------------------------
+
+EXTENDS Integers, Sequences, TLC
+
+(** NB: This is introduced for support of multiple burners      **)
+(**     in a single biolerplate, though not implemented yet.    **)
+burners == {"left bottom"}
+users == {1}
+
+(** NB: These Constants might be defined in model;               **)
+(**     Though I decided to place them here for readability sake **)
+states == [gas: {0}, ign: 0..1, flm: 0..1]
+actions == [pressed: 0..1, turned: 0..1, couple_hot: 0..1]
+
+(********
+
+--algorithm boilerplate {
+    variables state \in states,
+    action \in actions;
+    
+    fair process (user \in users) {
+        user_l1:
+        while (TRUE){
+            with (current_action \in actions){
+                action := current_action;
+            };
+        };
+    };
+    
+\* ASK about previous states in spec, not assertions
+
+    fair process (burner \in burners) 
+    variables prev_state,
+    coupleMalfunct,
+    coupleJitter,
+    gasLeak,
+    flm,
+    gas,
+    ign;
+    {
+        burner_init:
+        prev_state := state;
+        
+        burner_l1:
+        while (TRUE) {
+        
+            if (coupleMalfunct = 1){
+                if (flm = 0) coupleMalfunct := 0;
+            };
+            else {
+                if (prev_state.gas = 0 /\ prev_state.flm = 0 /\ gas = 0 /\ flm = 1) coupleMalfunct := 1;
+            };
+            
+            if (coupleJitter = 1){
+                if (flm = 0)  coupleJitter := 0;
+            };
+            else {
+                if (flm = 1 /\ gas = 0)  coupleJitter := 1;
+            };
+            
+            if (gasLeak = 1){
+                if (gas = 0)  gasLeak := 0;
+            };
+            else {
+                if (flm = 0 /\ gas = 1 /\ ign = 0)  gasLeak := 1;
+            };
+
+            flm := action.couple_hot;
+            
+            if (action.pressed = 1)
+                ign:=1;
+            else
+                ign:=0;
+                
+            if (action.pressed = 1 \/ action.couple_hot = 1){
+                if (action.turned = 1 /\ coupleMalfunct = 0 /\ coupleJitter = 0) {
+                    gas:=1;   
+                };
+                else {
+                    gas := 0;
+                };
+            }
+            else {
+                gas := 0;
+            };
+            
+            prev_state  :=  state;
+            state       :=  [gas |-> gas, ign |-> ign, flm |-> flm];
+        };
+    };
+}
+
+********)
+\* BEGIN TRANSLATION (chksum(pcal) = "e9a7b01b" /\ chksum(tla) = "d26dbfc6")
+CONSTANT defaultInitValue
+VARIABLES state, action, pc, prev_state, coupleMalfunct, coupleJitter, 
+          gasLeak, flm, gas, ign
+
+vars == << state, action, pc, prev_state, coupleMalfunct, coupleJitter, 
+           gasLeak, flm, gas, ign >>
+
+ProcSet == (users) \cup (burners)
+
+Init == (* Global variables *)
+        /\ state \in states
+        /\ action \in actions
+        (* Process burner *)
+        /\ prev_state = [self \in burners |-> defaultInitValue]
+        /\ coupleMalfunct = [self \in burners |-> defaultInitValue]
+        /\ coupleJitter = [self \in burners |-> defaultInitValue]
+        /\ gasLeak = [self \in burners |-> defaultInitValue]
+        /\ flm = [self \in burners |-> defaultInitValue]
+        /\ gas = [self \in burners |-> defaultInitValue]
+        /\ ign = [self \in burners |-> defaultInitValue]
+        /\ pc = [self \in ProcSet |-> CASE self \in users -> "user_l1"
+                                        [] self \in burners -> "burner_init"]
+
+user_l1(self) == /\ pc[self] = "user_l1"
+                 /\ \E current_action \in actions:
+                      action' = current_action
+                 /\ pc' = [pc EXCEPT ![self] = "user_l1"]
+                 /\ UNCHANGED << state, prev_state, coupleMalfunct, 
+                                 coupleJitter, gasLeak, flm, gas, ign >>
+
+user(self) == user_l1(self)
+
+burner_init(self) == /\ pc[self] = "burner_init"
+                     /\ prev_state' = [prev_state EXCEPT ![self] = state]
+                     /\ pc' = [pc EXCEPT ![self] = "burner_l1"]
+                     /\ UNCHANGED << state, action, coupleMalfunct, 
+                                     coupleJitter, gasLeak, flm, gas, ign >>
+
+burner_l1(self) == /\ pc[self] = "burner_l1"
+                   /\ IF coupleMalfunct[self] = 1
+                         THEN /\ IF flm[self] = 0
+                                    THEN /\ coupleMalfunct' = [coupleMalfunct EXCEPT ![self] = 0]
+                                    ELSE /\ TRUE
+                                         /\ UNCHANGED coupleMalfunct
+                         ELSE /\ IF prev_state[self].gas = 0 /\ prev_state[self].flm = 0 /\ gas[self] = 0 /\ flm[self] = 1
+                                    THEN /\ coupleMalfunct' = [coupleMalfunct EXCEPT ![self] = 1]
+                                    ELSE /\ TRUE
+                                         /\ UNCHANGED coupleMalfunct
+                   /\ IF coupleJitter[self] = 1
+                         THEN /\ IF flm[self] = 0
+                                    THEN /\ coupleJitter' = [coupleJitter EXCEPT ![self] = 0]
+                                    ELSE /\ TRUE
+                                         /\ UNCHANGED coupleJitter
+                         ELSE /\ IF flm[self] = 1 /\ gas[self] = 0
+                                    THEN /\ coupleJitter' = [coupleJitter EXCEPT ![self] = 1]
+                                    ELSE /\ TRUE
+                                         /\ UNCHANGED coupleJitter
+                   /\ IF gasLeak[self] = 1
+                         THEN /\ IF gas[self] = 0
+                                    THEN /\ gasLeak' = [gasLeak EXCEPT ![self] = 0]
+                                    ELSE /\ TRUE
+                                         /\ UNCHANGED gasLeak
+                         ELSE /\ IF flm[self] = 0 /\ gas[self] = 1 /\ ign[self] = 0
+                                    THEN /\ gasLeak' = [gasLeak EXCEPT ![self] = 1]
+                                    ELSE /\ TRUE
+                                         /\ UNCHANGED gasLeak
+                   /\ flm' = [flm EXCEPT ![self] = action.couple_hot]
+                   /\ IF action.pressed = 1
+                         THEN /\ ign' = [ign EXCEPT ![self] = 1]
+                         ELSE /\ ign' = [ign EXCEPT ![self] = 0]
+                   /\ IF action.pressed = 1 \/ action.couple_hot = 1
+                         THEN /\ IF action.turned = 1 /\ coupleMalfunct'[self] = 0 /\ coupleJitter'[self] = 0
+                                    THEN /\ gas' = [gas EXCEPT ![self] = 1]
+                                    ELSE /\ gas' = [gas EXCEPT ![self] = 0]
+                         ELSE /\ gas' = [gas EXCEPT ![self] = 0]
+                   /\ prev_state' = [prev_state EXCEPT ![self] = state]
+                   /\ state' = [gas |-> gas'[self], ign |-> ign'[self], flm |-> flm'[self]]
+                   /\ pc' = [pc EXCEPT ![self] = "burner_l1"]
+                   /\ UNCHANGED action
+
+burner(self) == burner_init(self) \/ burner_l1(self)
+
+Next == (\E self \in users: user(self))
+           \/ (\E self \in burners: burner(self))
+
+Spec == /\ Init /\ [][Next]_vars
+        /\ \A self \in users : WF_vars(user(self))
+        /\ \A self \in burners : WF_vars(burner(self))
+
+\* END TRANSLATION 
+
+
+
+
+-------------------------------- MODULE gas --------------------------------
+
+EXTENDS Integers, Sequences, TLC
+
+(** NB: These Constants might be defined in model;               **)
+(**     Though I decided to place them here for readability sake **)
+states == [gas: {0}, ign: 0..1, flm: 0..1]
+actions == [pressed: 0..1, turned: 0..1, couple_hot: 0..1]
+
+(********
+
+--algorithm boilerplate {
+    variables state \in states, 
+    gas \in 0..1, 
+    ign \in 0..1, 
+    flm \in 0..1, 
+    prev_state \in states,
+    coupleMalfunct = 0,
+    coupleJitter = 0,
+    gasLeak = 0,
+    acts = 0;
+    
+    fair process (burner \in {1})
+    {
+        l1: while (TRUE) {
+            with (action \in actions){
+\*                acts := action;
+                prev_state := state;
+            
+                flm:=action.couple_hot;
+                if (action.pressed = 1)
+                    ign:=1;
+                else
+                    ign:=0;
+                    
+                if (action.pressed = 1 \/ action.couple_hot = 1){
+                    if (action.turned = 1 /\ coupleMalfunct = 0 /\ coupleJitter = 0) {
+                        gas:=1;   
+                    }
+                    else {
+                        gas := 0;
+                    }
+                }
+                else {
+                    gas := 0;
+                };
+                
+                
+                if (coupleMalfunct  = 1){
+                    if (flm = 0) coupleMalfunct := 0;
+                }
+                else {
+                    if (prev_state.gas = 0 /\ prev_state.flm = 0 /\ gas = 0 /\ flm = 1) coupleMalfunct := 1;
+                };
+                
+                if (coupleJitter = 1){
+                    if (flm = 0)  coupleJitter := 0;
+                }
+                else {
+                    if (flm = 1 /\ gas = 0)  coupleJitter := 1;
+                };
+                
+                if (gasLeak = 1){
+                    if (gas = 0)  gasLeak := 0;
+                }
+                else {
+                    if (flm = 0 /\ gas = 1 /\ ign = 0)  gasLeak := 1;
+                };
+
+                state:=[gas |-> gas, ign |-> ign, flm |-> flm];
+        };
+    }
+    };
+    
+    
+    
+}
+
+********)
+\* BEGIN TRANSLATION (chksum(pcal) = "64048dd9" /\ chksum(tla) = "d334382f")
+VARIABLES state, gas, ign, flm, prev_state, coupleMalfunct, coupleJitter, 
+          gasLeak, acts
+
+vars == << state, gas, ign, flm, prev_state, coupleMalfunct, coupleJitter, 
+           gasLeak, acts >>
+
+ProcSet == ({1})
+
+Init == (* Global variables *)
+        /\ state \in states
+        /\ gas \in 0..1
+        /\ ign \in 0..1
+        /\ flm \in 0..1
+        /\ prev_state \in states
+        /\ coupleMalfunct = 0
+        /\ coupleJitter = 0
+        /\ gasLeak = 0
+        /\ acts = 0
+
+burner(self) == /\ \E action \in actions:
+                     /\ prev_state' = state
+                     /\ flm' = action.couple_hot
+                     /\ IF action.pressed = 1
+                           THEN /\ ign' = 1
+                           ELSE /\ ign' = 0
+                     /\ IF action.pressed = 1 \/ action.couple_hot = 1
+                           THEN /\ IF action.turned = 1 /\ coupleMalfunct = 0 /\ coupleJitter = 0
+                                      THEN /\ gas' = 1
+                                      ELSE /\ gas' = 0
+                           ELSE /\ gas' = 0
+                     /\ IF coupleMalfunct  = 1
+                           THEN /\ IF flm' = 0
+                                      THEN /\ coupleMalfunct' = 0
+                                      ELSE /\ TRUE
+                                           /\ UNCHANGED coupleMalfunct
+                           ELSE /\ IF prev_state'.gas = 0 /\ prev_state'.flm = 0 /\ gas' = 0 /\ flm' = 1
+                                      THEN /\ coupleMalfunct' = 1
+                                      ELSE /\ TRUE
+                                           /\ UNCHANGED coupleMalfunct
+                     /\ IF coupleJitter = 1
+                           THEN /\ IF flm' = 0
+                                      THEN /\ coupleJitter' = 0
+                                      ELSE /\ TRUE
+                                           /\ UNCHANGED coupleJitter
+                           ELSE /\ IF flm' = 1 /\ gas' = 0
+                                      THEN /\ coupleJitter' = 1
+                                      ELSE /\ TRUE
+                                           /\ UNCHANGED coupleJitter
+                     /\ IF gasLeak = 1
+                           THEN /\ IF gas' = 0
+                                      THEN /\ gasLeak' = 0
+                                      ELSE /\ TRUE
+                                           /\ UNCHANGED gasLeak
+                           ELSE /\ IF flm' = 0 /\ gas' = 1 /\ ign' = 0
+                                      THEN /\ gasLeak' = 1
+                                      ELSE /\ TRUE
+                                           /\ UNCHANGED gasLeak
+                     /\ state' = [gas |-> gas', ign |-> ign', flm |-> flm']
+                /\ acts' = acts
+
+Next == (\E self \in {1}: burner(self))
+
+Spec0 == /\ Init /\ [][Next]_vars
+        /\ \A self \in {1} : WF_vars(burner(self))
+
+\* END TRANSLATION 
+
+safety_noLeak_ign == (state.gas = 1 => state.ign = 1)
+safety_noLeak_flm == (state.gas = 1 => state'.flm = 1)
+safety_noLeak == safety_noLeak_ign \/ safety_noLeak_flm
+safety_coupleMalfunct == (coupleJitter = 1 => state.gas = 0)
+safety_coupleJitter == (coupleJitter = 1 => state.gas = 0)
+satefy_noIgnAtLeak == (gasLeak = 1 => state.ign = 0)
+
+\*liveness_converge == <>(state.gas = 1 /\ state.ign = 0 /\ state.flm = 1)
+\*liveness_reach == [](state.ign = 1 /\ coupleJitter = 0 /\ coupleMalfunct = 0 => <>(state.gas = 1))
+
+=============================================================================
+\* Modification History
+\* Last modified Wed Dec 20 07:59:03 MSK 2023 by ivans
+\* Created Fri Nov 17 21:40:25 MSK 2023 by ivans
+
