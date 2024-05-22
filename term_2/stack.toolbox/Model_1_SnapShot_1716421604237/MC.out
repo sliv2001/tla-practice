@@ -1,0 +1,207 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.18 of Day Month 20?? (rev: c86f3c7)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 94 and seed -1125087319962241694 with 8 workers on 16 cores with 1209MB heap and 2719MB offheap memory [pid: 187408] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file D:\Desktop\tla-practice\term_2\stack.toolbox\Model_1\MC.tla
+Parsing file D:\Desktop\tla-practice\term_2\stack.toolbox\Model_1\stack.tla
+Warning: symbols were renamed.
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\TLC.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\Integers.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\Sequences.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\FiniteSets.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module stack
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2024-05-23 02:46:41)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2102:1 @!@!@
+Attempted to evaluate an expression of form P /\ Q when P was
+a set of the form {e1, ... ,eN}.
+line 131, col 19 to line 131, col 50 of module stack
+While working on the initial state:
+/\ pc = <<"main_loop", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 2, st |-> "in_stack"],
+   [i |-> 2, p |-> 1, n |-> 3, st |-> "in_stack"],
+   [i |-> 3, p |-> 2, n |-> 4, st |-> "in_stack"],
+   [i |-> 4, p |-> 3, n |-> 5, st |-> "in_stack"],
+   [i |-> 5, p |-> 4, n |-> 6, st |-> "in_stack"],
+   [i |-> 6, p |-> 5, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<>>, <<>>>>
+
+@!@!@ENDMSG 2102 @!@!@
+@!@!@STARTMSG 2103:1 @!@!@
+The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 145, column 9 to line 149, column 50 in stack
+1. Line 145, column 12 to line 145, column 31 in stack
+2. Line 146, column 12 to line 146, column 20 in stack
+3. Line 147, column 12 to line 147, column 30 in stack
+4. Line 148, column 12 to line 148, column 47 in stack
+5. Line 149, column 12 to line 149, column 50 in stack
+6. Line 137, column 14 to line 137, column 55 in stack
+7. Line 137, column 14 to line 137, column 38 in stack
+8. Line 137, column 14 to line 137, column 23 in stack
+9. Line 131, column 19 to line 131, column 50 in stack
+
+
+@!@!@ENDMSG 2103 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2024-05-23 02:46:42
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 144, col 1 to line 144, col 4 of module stack>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 145, col 12 to line 145, col 31 of module stack: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 147, col 12 to line 147, col 30 of module stack: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 148, col 20 to line 148, col 47 of module stack: 2:4
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 148, col 30 to line 148, col 36 of module stack: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 149, col 12 to line 149, col 50 of module stack: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  |line 149, col 17 to line 149, col 50 of module stack: 2:4
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 149, col 27 to line 149, col 33 of module stack: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<clear_ line 151, col 1 to line 151, col 12 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 154, col 33 to line 158, col 97 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 159, col 31 to line 159, col 66 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 160, col 31 to line 160, col 65 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 161, col 31 to line 161, col 44 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 162, col 20 to line 162, col 53 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<main_loop line 166, col 1 to line 166, col 15 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 167, col 29 to line 167, col 61 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 168, col 29 to line 168, col 42 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 169, col 29 to line 169, col 62 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 170, col 29 to line 170, col 42 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 171, col 29 to line 173, col 77 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 174, col 29 to line 174, col 64 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 175, col 23 to line 175, col 56 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<pop line 177, col 1 to line 177, col 9 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 179, col 31 to line 181, col 68 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 182, col 31 to line 182, col 53 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 184, col 28 to line 184, col 55 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 17 to line 185, col 59 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 17 to line 186, col 43 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<push line 188, col 1 to line 188, col 10 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 191, col 34 to line 193, col 72 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 194, col 34 to line 194, col 44 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 196, col 29 to line 196, col 55 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 197, col 18 to line 197, col 60 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 198, col 18 to line 198, col 45 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<end_main_loop line 200, col 1 to line 200, col 19 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 201, col 27 to line 201, col 65 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 202, col 27 to line 202, col 67 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Terminating line 208, col 1 to line 208, col 11 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 209, col 19 to line 209, col 32 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<check line 137, col 5 to line 137, col 9 of module stack>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 137, col 14 to line 137, col 55 of module stack: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(1) at 2024-05-23 02:46:42: 1 states generated (43 s/min), 1 distinct states found (43 ds/min), 1 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+1 states generated, 1 distinct states found, 1 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 1.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1401ms at (2024-05-23 02:46:42)
+@!@!@ENDMSG 2186 @!@!@

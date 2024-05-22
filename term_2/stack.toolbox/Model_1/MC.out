@@ -1,0 +1,471 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.18 of Day Month 20?? (rev: c86f3c7)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 49 and seed 7218763862240914761 with 8 workers on 16 cores with 1209MB heap and 2719MB offheap memory [pid: 186328] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file D:\Desktop\tla-practice\term_2\stack.toolbox\Model_1\MC.tla
+Parsing file D:\Desktop\tla-practice\term_2\stack.toolbox\Model_1\stack.tla
+Warning: symbols were renamed.
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\TLC.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\Integers.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\Sequences.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\FiniteSets.tla
+Parsing file D:\Desktop\toolbox\plugins\org.lamport.tlatools_1.0.0.202311090145\tla2sany\StandardModules\Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module stack
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2024-05-23 02:48:13)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2024-05-23 02:48:14.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2114:1 @!@!@
+Deadlock reached.
+@!@!@ENDMSG 2114 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ pc = <<"main_loop", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 2, st |-> "in_stack"],
+   [i |-> 2, p |-> 1, n |-> 3, st |-> "in_stack"],
+   [i |-> 3, p |-> 2, n |-> 4, st |-> "in_stack"],
+   [i |-> 4, p |-> 3, n |-> 5, st |-> "in_stack"],
+   [i |-> 5, p |-> 4, n |-> 6, st |-> "in_stack"],
+   [i |-> 6, p |-> 5, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<>>, <<>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <main_loop(1) line 166, col 20 to line 175, col 56 of module stack>
+/\ pc = <<"clear_", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 2, st |-> "in_stack"],
+   [i |-> 2, p |-> 1, n |-> 3, st |-> "in_stack"],
+   [i |-> 3, p |-> 2, n |-> 4, st |-> "in_stack"],
+   [i |-> 4, p |-> 3, n |-> 5, st |-> "in_stack"],
+   [i |-> 5, p |-> 4, n |-> 6, st |-> "in_stack"],
+   [i |-> 6, p |-> 5, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<[pc |-> "end_main_loop", procedure |-> "clear"]>>, <<>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <clear_(1) line 151, col 17 to line 162, col 53 of module stack>
+/\ pc = <<"clear_", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 3, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 1, n |-> 4, st |-> "in_stack"],
+   [i |-> 4, p |-> 3, n |-> 5, st |-> "in_stack"],
+   [i |-> 5, p |-> 4, n |-> 6, st |-> "in_stack"],
+   [i |-> 6, p |-> 5, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<[pc |-> "end_main_loop", procedure |-> "clear"]>>, <<>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <clear_(1) line 151, col 17 to line 162, col 53 of module stack>
+/\ pc = <<"clear_", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 3, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 1, n |-> 4, st |-> "in_stack"],
+   [i |-> 4, p |-> 3, n |-> 6, st |-> "in_stack"],
+   [i |-> 5, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 6, p |-> 4, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<[pc |-> "end_main_loop", procedure |-> "clear"]>>, <<>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <clear_(1) line 151, col 17 to line 162, col 53 of module stack>
+/\ pc = <<"clear_", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 4, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 4, p |-> 1, n |-> 6, st |-> "in_stack"],
+   [i |-> 5, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 6, p |-> 4, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<[pc |-> "end_main_loop", procedure |-> "clear"]>>, <<>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <clear_(1) line 151, col 17 to line 162, col 53 of module stack>
+/\ pc = <<"clear_", "main_loop">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 6, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 4, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 5, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 6, p |-> 1, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = <<<<[pc |-> "end_main_loop", procedure |-> "clear"]>>, <<>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <main_loop(2) line 166, col 20 to line 175, col 56 of module stack>
+/\ pc = <<"clear_", "clear_">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 6, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 4, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 5, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 6, p |-> 1, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = << <<[pc |-> "end_main_loop", procedure |-> "clear"]>>,
+   <<[pc |-> "end_main_loop", procedure |-> "clear"]>> >>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <clear_(1) line 151, col 17 to line 162, col 53 of module stack>
+/\ pc = <<"Error", "clear_">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 6, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 4, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 5, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 6, p |-> 1, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = << <<[pc |-> "end_main_loop", procedure |-> "clear"]>>,
+   <<[pc |-> "end_main_loop", procedure |-> "clear"]>> >>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <clear_(2) line 151, col 17 to line 162, col 53 of module stack>
+/\ pc = <<"Error", "Error">>
+/\ last = 6
+/\ elems = << [i |-> 1, p |-> 0, n |-> 6, st |-> "in_stack"],
+   [i |-> 2, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 3, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 4, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 5, p |-> 0, n |-> 0, st |-> "deleted"],
+   [i |-> 6, p |-> 1, n |-> 0, st |-> "in_stack"] >>
+/\ first = 1
+/\ stack = << <<[pc |-> "end_main_loop", procedure |-> "clear"]>>,
+   <<[pc |-> "end_main_loop", procedure |-> "clear"]>> >>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2024-05-23 02:48:15
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 144, col 1 to line 144, col 4 of module stack>: 7:7
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 145, col 12 to line 145, col 31 of module stack: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 147, col 12 to line 147, col 30 of module stack: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 148, col 20 to line 148, col 47 of module stack: 7:14
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 148, col 30 to line 148, col 36 of module stack: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 149, col 12 to line 149, col 50 of module stack: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  |line 149, col 17 to line 149, col 50 of module stack: 7:14
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 149, col 27 to line 149, col 33 of module stack: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<clear_ line 151, col 1 to line 151, col 12 of module stack>: 431:3703
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 151, col 20 to line 151, col 38 of module stack: 5469
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 151, col 20 to line 151, col 27 of module stack: 3719
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 152, col 23 to line 152, col 52 of module stack: 1750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 152, col 23 to line 152, col 48 of module stack: 1750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 152, col 35 to line 152, col 47 of module stack: 1750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 125, col 18 to line 125, col 89 of module stack: 1750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 109, col 9 to line 113, col 44 of module stack: 1750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 114, col 8 to line 114, col 17 of module stack: 1750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||||line 125, col 87 to line 125, col 88 of module stack: 1750:1750
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 154, col 33 to line 158, col 97 of module stack: 3561
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 153, col 40 to line 153, col 57 of module stack: 1608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 127, col 23 to line 127, col 129 of module stack: 1608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 109, col 9 to line 113, col 44 of module stack: 1608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 114, col 8 to line 114, col 17 of module stack: 1608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||line 127, col 127 to line 127, col 128 of module stack: 1608:1608
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 159, col 31 to line 159, col 66 of module stack: 3561
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 160, col 28 to line 161, col 44 of module stack: 142
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 162, col 20 to line 162, col 53 of module stack: 3703
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<main_loop line 166, col 1 to line 166, col 15 of module stack>: 1010:1479
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 166, col 23 to line 166, col 44 of module stack: 4162
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 166, col 23 to line 166, col 30 of module stack: 3669
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 167, col 23 to line 174, col 64 of module stack: 493
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 175, col 23 to line 175, col 56 of module stack: 1479
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<pop line 177, col 1 to line 177, col 9 of module stack>: 63:335
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 177, col 17 to line 177, col 32 of module stack: 3988
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 177, col 17 to line 177, col 24 of module stack: 3653
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 178, col 20 to line 178, col 49 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 178, col 20 to line 178, col 45 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 178, col 32 to line 178, col 44 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 125, col 18 to line 125, col 89 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 109, col 9 to line 113, col 44 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 114, col 8 to line 114, col 17 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||||line 125, col 87 to line 125, col 88 of module stack: 335:335
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 179, col 25 to line 182, col 53 of module stack: 311
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 28 to line 183, col 31 of module stack: 24
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 184, col 28 to line 184, col 55 of module stack: 24
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 17 to line 185, col 59 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 17 to line 186, col 43 of module stack: 335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<push line 188, col 1 to line 188, col 10 of module stack>: 475:639
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 188, col 18 to line 188, col 34 of module stack: 3972
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 188, col 18 to line 188, col 25 of module stack: 3649
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 189, col 21 to line 189, col 47 of module stack: 323
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 189, col 21 to line 189, col 43 of module stack: 323
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 189, col 33 to line 189, col 42 of module stack: 323
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 126, col 15 to line 126, col 86 of module stack: 323
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 109, col 9 to line 113, col 44 of module stack: 323
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 114, col 8 to line 114, col 17 of module stack: 323
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||||line 126, col 84 to line 126, col 85 of module stack: 323:288
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 191, col 31 to line 194, col 44 of module stack: 604
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 190, col 38 to line 190, col 47 of module stack: 288
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 126, col 15 to line 126, col 86 of module stack: 288
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 109, col 9 to line 113, col 44 of module stack: 288
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 114, col 8 to line 114, col 17 of module stack: 288
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||line 126, col 84 to line 126, col 85 of module stack: 288:288
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 195, col 29 to line 195, col 32 of module stack: 35
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 196, col 29 to line 196, col 55 of module stack: 35
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 197, col 18 to line 197, col 60 of module stack: 639
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 198, col 18 to line 198, col 45 of module stack: 639
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<end_main_loop line 200, col 1 to line 200, col 19 of module stack>: 565:663
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 200, col 27 to line 200, col 52 of module stack: 4312
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 200, col 27 to line 200, col 34 of module stack: 3649
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 201, col 27 to line 201, col 65 of module stack: 663
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 202, col 27 to line 202, col 67 of module stack: 663
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Terminating line 208, col 1 to line 208, col 11 of module stack>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 208, col 19 to line 208, col 56 of module stack: 1815
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 209, col 19 to line 209, col 32 of module stack: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<check line 137, col 5 to line 137, col 9 of module stack>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 137, col 15 to line 137, col 45 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 137, col 18 to line 137, col 45 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 137, col 18 to line 137, col 28 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 133, col 20 to line 133, col 55 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 133, col 44 to line 133, col 55 of module stack: 10144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 133, col 29 to line 133, col 41 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 125, col 18 to line 125, col 89 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 109, col 9 to line 113, col 44 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 114, col 8 to line 114, col 17 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||||||line 125, col 87 to line 125, col 88 of module stack: 2545:2545
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 137, col 33 to line 137, col 45 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 136, col 22 to line 136, col 77 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 136, col 46 to line 136, col 77 of module stack: 10144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 136, col 31 to line 136, col 43 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 125, col 18 to line 125, col 89 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 109, col 9 to line 113, col 44 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||||line 114, col 8 to line 114, col 17 of module stack: 2545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  ||||||line 125, col 87 to line 125, col 88 of module stack: 2545:2545
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(13) at 2024-05-23 02:48:15: 6 688 states generated (182 898 s/min), 2 545 distinct states found (69 598 ds/min), 730 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+6688 states generated, 2545 distinct states found, 730 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 13.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 2221ms at (2024-05-23 02:48:15)
+@!@!@ENDMSG 2186 @!@!@
